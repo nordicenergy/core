@@ -258,7 +258,7 @@ export class DatabaseInteraction {
                 });
                 return wallet;
             });
-            this.logger.warning(JSON.stringify({
+            this.logger.debug(JSON.stringify({
                 method: 'delegates',
                 result: delegates?.map(d => d.publicKey)
             }))
@@ -275,7 +275,7 @@ export class DatabaseInteraction {
         const seedSource: string = round.toString();
         let currentSeed: Buffer = Crypto.HashAlgorithms.sha256(seedSource);
 
-        this.logger.warning(JSON.stringify({
+        this.logger.debug(JSON.stringify({
             round,
             height: this.stateStore.getLastBlock().data.height,
             seedSource,
@@ -302,7 +302,7 @@ export class DatabaseInteraction {
             currentSeed = Crypto.HashAlgorithms.sha256(currentSeed);
         }
 
-        this.logger.warning(JSON.stringify({
+        this.logger.debug(JSON.stringify({
             method: 'seeds',
             result: seeds
         }))
