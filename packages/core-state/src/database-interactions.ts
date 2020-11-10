@@ -307,6 +307,11 @@ export class DatabaseInteraction {
             result: seeds
         }))
 
+        this.logger.debug(JSON.stringify({
+            method: 'delegates-after-sorting',
+            result: delegates
+        }))
+
         return delegates;
     }
 
