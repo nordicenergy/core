@@ -261,7 +261,7 @@ export class DatabaseInteraction {
             this.logger.warning(JSON.stringify({
                 method: 'delegates',
                 result: delegates?.map(d => d.publicKey)
-            }, null, 4))
+            }))
 
         }
 
@@ -280,7 +280,7 @@ export class DatabaseInteraction {
             height: this.stateStore.getLastBlock().data.height,
             seedSource,
             currentSeed: currentSeed.toString('hex'),
-        }, null, 4))
+        }))
 
         delegates = delegates.map((delegate) => delegate.clone());
 
@@ -305,7 +305,7 @@ export class DatabaseInteraction {
         this.logger.warning(JSON.stringify({
             method: 'seeds',
             result: seeds
-        }, null, 4))
+        }))
 
         return delegates;
     }
