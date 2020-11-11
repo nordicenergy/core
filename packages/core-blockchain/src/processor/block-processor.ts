@@ -203,6 +203,7 @@ export class BlockProcessor {
             .call("getActiveDelegates", { roundInfo })) as Contracts.State.Wallet[];
 
         const forgingInfo: Contracts.Shared.ForgingInfo = AppUtils.forgingInfoCalculator.calculateForgingInfo(
+            this.logger,
             block.data.timestamp,
             block.data.height,
             blockTimeLookup,
