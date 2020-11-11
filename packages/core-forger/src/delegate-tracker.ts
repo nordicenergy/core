@@ -88,6 +88,11 @@ export class DelegateTracker {
             blockTimeLookup,
         );
 
+        this.logger.debug(JSON.stringify({
+            method: 'forgingInfo',
+            result: forgingInfo
+        }));
+
         // @ts-ignore
         this.logger.warning(JSON.stringify({
             method: 'activeDelegatesPublicKeys',

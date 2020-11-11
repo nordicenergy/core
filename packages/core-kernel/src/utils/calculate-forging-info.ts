@@ -34,8 +34,10 @@ export const calculateForgingInfo = (
 ): ForgingInfo => {
     const slotInfo = Crypto.Slots.getSlotInfo(getTimeStampForBlock, timestamp, height);
 
-    logger.debug(getTimeStampForBlock, timestamp, height);
-    logger.debug(slotInfo);
+    logger.debug(JSON.stringify({
+        method: 'calculateForgingInfo',
+        result: { getTimeStampForBlock, timestamp, height, slotInfo }
+    }));
 
     const [currentForger, nextForger] = findIndex(logger, height, slotInfo.slotNumber, getTimeStampForBlock);
     const canForge = slotInfo.forgingStatus;
@@ -54,8 +56,6 @@ const findIndex = (
     let lastSpanSlotNumber = 0;
     let activeDelegates = Managers.configManager.getMilestone(1).activeDelegates;
 
-    logger.debug(["lastSpanSlotNumber", lastSpanSlotNumber]);
-
     const milestones = getMilestonesWhichAffectActiveDelegateCount();
 
     for (let i = 0; i < milestones.length - 1; i++) {
@@ -70,15 +70,19 @@ const findIndex = (
 
         nextMilestone = Managers.configManager.getNextMilestoneWithNewKey(nextMilestone.height, "activeDelegates");
     }
-    logger.debug(["slotNumber", slotNumber]);
-    logger.debug(["lastSpanSlotNumber", lastSpanSlotNumber]);
-    logger.debug(["activeDelegates", activeDelegates]);
+
+    logger.debug(JSON.stringify({
+        method: 'findIndex',
+        result: { slotNumber, lastSpanSlotNumber, activeDelegates }
+    }));
 
     const currentForger = (slotNumber - lastSpanSlotNumber) % activeDelegates;
     const nextForger = (currentForger + 1) % activeDelegates;
 
-    logger.debug(["currentForger", currentForger]);
-    logger.debug(["nextForger", nextForger]);
+    logger.debug(JSON.stringify({
+        method: 'findIndex',
+        result: { currentForger, nextForger }
+    }));
 
     return [currentForger, nextForger];
 };
