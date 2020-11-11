@@ -1,5 +1,6 @@
 import { Container, Contracts, Services, Utils } from "@arkecosystem/core-kernel";
 // import { Managers, Utils as CryptoUtils } from "@arkecosystem/crypto";
+import { Managers } from "@arkecosystem/crypto";
 
 import { Delegate } from "./interfaces";
 
@@ -67,7 +68,7 @@ export class DelegateTracker {
     public async handle(): Promise<void> {
         // Arrange...
         const { height, timestamp } = this.blockchainService.getLastBlock().data;
-        // const maxDelegates = Managers.configManager.getMilestone(height).activeDelegates;
+        const maxDelegates = Managers.configManager.getMilestone(height).activeDelegates;
         // const blockTime: number = CryptoUtils.calculateBlockTime(height);
         const round: Contracts.Shared.RoundInfo = Utils.roundCalculator.calculateRound(height);
 
