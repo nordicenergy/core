@@ -307,10 +307,14 @@ export class DatabaseInteraction {
         //     result: seeds
         // }))
 
-        // this.logger.debug(JSON.stringify({
-        //     method: 'delegates-after-sorting',
-        //     result: delegates
-        // }))
+        this.logger.debug(JSON.stringify({
+            method: 'delegates-after-sorting',
+            result: {
+                round,
+                height: this.stateStore.getLastBlock().data.height,
+                delegates
+            }
+        }))
 
         return delegates;
     }

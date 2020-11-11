@@ -100,15 +100,15 @@ export class DelegateTracker {
             }
         }
 
-        // @ts-ignore
-        this.logger.warning(JSON.stringify({
-            method: 'DelegateTracker#nextForgers',
-            result: {
-                height,
-                timestamp,
-                nextForgers
-            }
-        }, null, 4))
+        // // @ts-ignore
+        // this.logger.warning(JSON.stringify({
+        //     method: 'DelegateTracker#nextForgers',
+        //     result: {
+        //         height,
+        //         timestamp,
+        //         nextForgers
+        //     }
+        // }, null, 4))
 
         // if (activeDelegatesPublicKeys.length < maxDelegates) {
         //     return this.logger.warning(
@@ -161,17 +161,17 @@ export class DelegateTracker {
             }
         }
 
-        // @ts-ignore
-        this.logger.warning(JSON.stringify({
-            method: 'FINAL',
-            result: {
-                height,
-                timestamp,
-                round,
-                activeDelegatesPublicKeys,
-                finalList,
-            }
-        }, null, 4))
+        // // @ts-ignore
+        // this.logger.warning(JSON.stringify({
+        //     method: 'FINAL',
+        //     result: {
+        //         height,
+        //         timestamp,
+        //         round,
+        //         activeDelegatesPublicKeys,
+        //         finalList,
+        //     }
+        // }, null, 4))
 
         // for (const delegate of this.delegates) {
         //     let indexInNextForgers = 0;
