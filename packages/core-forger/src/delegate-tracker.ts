@@ -88,26 +88,26 @@ export class DelegateTracker {
             blockTimeLookup,
         );
 
-        // // Determine Next Forgers...
-        // const nextForgers: string[] = [];
-        // for (let i = 0; i <= maxDelegates; i++) {
-        //     const delegate: string | undefined =
-        //         activeDelegatesPublicKeys[(forgingInfo.currentForger + i) % maxDelegates];
+        // Determine Next Forgers...
+        const nextForgers: string[] = [];
+        for (let i = 0; i <= maxDelegates; i++) {
+            const delegate: string | undefined =
+                activeDelegatesPublicKeys[(forgingInfo.currentForger + i) % maxDelegates];
 
-        //     if (delegate) {
-        //         nextForgers.push(delegate);
-        //     }
-        // }
+            if (delegate) {
+                nextForgers.push(delegate);
+            }
+        }
 
-        // // @ts-ignore
-        // this.logger.warning(JSON.stringify({
-        //     method: 'DelegateTracker#nextForgers',
-        //     result: {
-        //         height,
-        //         timestamp,
-        //         nextForgers
-        //     }
-        // }, null, 4))
+        // @ts-ignore
+        this.logger.warning(JSON.stringify({
+            method: 'DelegateTracker#nextForgers',
+            result: {
+                height,
+                timestamp,
+                nextForgers
+            }
+        }, null, 4))
 
         // if (activeDelegatesPublicKeys.length < maxDelegates) {
         //     return this.logger.warning(
@@ -162,7 +162,7 @@ export class DelegateTracker {
 
         // @ts-ignore
         this.logger.warning(JSON.stringify({
-            method: 'activeDelegatesPublicKeys',
+            method: 'FINAL',
             result: {
                 height,
                 timestamp,

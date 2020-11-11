@@ -169,7 +169,6 @@ export class ServiceProvider extends Providers.ServiceProvider {
             "037850667ea2c8473adf7c87ee4496af1b7821f4e10761e78c3b391d6fcfbde9bb",
         ].map((publicKey: string) => new Method(publicKey));
 
-
         // const delegates: Set<Delegate> = new Set<Delegate>();
 
         // for (const secret of this.app.config("delegates.secrets")) {
