@@ -42,6 +42,11 @@ export const calculateForgingInfo = (
     const [currentForger, nextForger] = findIndex(logger, height, slotInfo.slotNumber, getTimeStampForBlock);
     const canForge = slotInfo.forgingStatus;
 
+    logger.debug(JSON.stringify({
+        method: 'calculateForgingInfo',
+        result: { currentForger, nextForger, blockTimestamp: slotInfo.startTime, canForge }
+    }));
+
     return { currentForger, nextForger, blockTimestamp: slotInfo.startTime, canForge };
 };
 
