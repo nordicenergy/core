@@ -258,10 +258,10 @@ export class DatabaseInteraction {
                 });
                 return wallet;
             });
-            this.logger.debug(JSON.stringify({
-                method: 'delegates',
-                result: delegates?.map(d => d.publicKey)
-            }))
+            // this.logger.debug(JSON.stringify({
+            //     method: 'delegates',
+            //     result: delegates?.map(d => d.publicKey)
+            // }))
 
         }
 
@@ -275,12 +275,12 @@ export class DatabaseInteraction {
         const seedSource: string = round.toString();
         let currentSeed: Buffer = Crypto.HashAlgorithms.sha256(seedSource);
 
-        this.logger.debug(JSON.stringify({
-            round,
-            height: this.stateStore.getLastBlock().data.height,
-            seedSource,
-            currentSeed: currentSeed.toString('hex'),
-        }))
+        // this.logger.debug(JSON.stringify({
+        //     round,
+        //     height: this.stateStore.getLastBlock().data.height,
+        //     seedSource,
+        //     currentSeed: currentSeed.toString('hex'),
+        // }))
 
         delegates = delegates.map((delegate) => delegate.clone());
 
@@ -302,15 +302,15 @@ export class DatabaseInteraction {
             currentSeed = Crypto.HashAlgorithms.sha256(currentSeed);
         }
 
-        this.logger.debug(JSON.stringify({
-            method: 'seeds',
-            result: seeds
-        }))
+        // this.logger.debug(JSON.stringify({
+        //     method: 'seeds',
+        //     result: seeds
+        // }))
 
-        this.logger.debug(JSON.stringify({
-            method: 'delegates-after-sorting',
-            result: delegates
-        }))
+        // this.logger.debug(JSON.stringify({
+        //     method: 'delegates-after-sorting',
+        //     result: delegates
+        // }))
 
         return delegates;
     }
