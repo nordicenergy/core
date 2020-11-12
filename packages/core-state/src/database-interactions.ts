@@ -275,12 +275,12 @@ export class DatabaseInteraction {
         const seedSource: string = round.toString();
         let currentSeed: Buffer = Crypto.HashAlgorithms.sha256(seedSource);
 
-        // this.logger.debug(JSON.stringify({
-        //     round,
-        //     height: this.stateStore.getLastBlock().data.height,
-        //     seedSource,
-        //     currentSeed: currentSeed.toString('hex'),
-        // }))
+        this.logger.debug(JSON.stringify({
+            round,
+            height: this.stateStore.getLastBlock().data.height,
+            seedSource,
+            currentSeed: currentSeed.toString('hex'),
+        }))
 
         delegates = delegates.map((delegate) => delegate.clone());
 
@@ -288,6 +288,13 @@ export class DatabaseInteraction {
         for (let i = 0, delCount = delegates.length; i < delCount; i++) {
             const elements = []
             for (let x = 0; x < 4 && i < delCount; i++, x++) {
+                if (!currentSeed[x]) {
+                    this.logger.debug(JSON.stringify({
+                        method: 'seeds',
+                        result: currentSeed[x]
+                    }))
+                }
+
                 const newIndex = currentSeed[x] % delCount;
                 const b = delegates[newIndex];
                 delegates[newIndex] = delegates[i];
@@ -302,10 +309,10 @@ export class DatabaseInteraction {
             currentSeed = Crypto.HashAlgorithms.sha256(currentSeed);
         }
 
-        // this.logger.debug(JSON.stringify({
-        //     method: 'seeds',
-        //     result: seeds
-        // }))
+        this.logger.debug(JSON.stringify({
+            method: 'seeds',
+            result: seeds
+        }))
 
         this.logger.debug(JSON.stringify({
             method: 'delegates-after-sorting',
